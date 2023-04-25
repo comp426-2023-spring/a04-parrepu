@@ -18,15 +18,20 @@ const app = express(); // Set name of variable to app as implied in documentatio
     // process.exit(0); 
 // }
 
-const port = arg2.port || 5000; // Another way (Debugging?)
+const portvar = arg2.portvar || 5000; // Another way (Debugging?)
 app.use(express.json());
 app.use(express.urlencoded({
     extended: true
 }))
 
 // Utilize "app.get()" to set the endpoints and ensure they return what's specified in the repo
-app.get('/', (req, res) => { // Reference online documentation to understand how to use 'app.get()'
+app.get('/app/', (req, res) => { // Reference online documentation to understand express routing and how to use 'app.get()'
     res.status(200).send("200 OK"); // Use "200 OK" string as shown in instructions
 })
 
+// Operational requirement # 4
+app.get('/app/rps/', (req, res) => {
+    // Same format as above and utilize stringify (look a previous assignment to see how it works)
+    res.status(200).send(JSON.stringify(rps()));
+})
 
