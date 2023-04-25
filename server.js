@@ -1,8 +1,8 @@
 // Code goes here
 
 // Remember to import RPS and RPSLS module from a03 (stated in repo documentation)
-import { rps } from "../lib/rpsls.js"; // Right syntax?
-import { rpsls } from "../lib/rpsls.js";
+import { rps } from "./lib/rpsls.js"; // Right syntax?
+import { rpsls } from "./lib/rpsls.js";
 // Also import the dependencies you installed on Powershell
 import express from "express";
 import minimist from "minimist";
