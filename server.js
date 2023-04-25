@@ -26,25 +26,52 @@ app.use(express.urlencoded({
     extended: true
 }))
 
-// Utilize "app.get()" to set the endpoints and ensure they return what's specified in the repo
+// Utilize "app.get()" to set the endpoints and ensure they return what's specified in the repo (GET method route)
 app.get('/app/', (req, res) => { // Reference online documentation to understand express routing and how to use 'app.get()'
     res.status(200).send("200 OK"); // Use "200 OK" string as shown in instructions
 })
 
-// Operational requirement # 4
+// Operational requirement 
 app.get('/app/rps/', (req, res) => {
     // Same format as above and utilize stringify (look a previous assignment to see how it works)
     res.status(200).send(JSON.stringify(rps()));
 })
 
-// Operational requirement # 5 (just pass rpsls() into stringify instead)
+// Operational requirement (just pass rpsls() into stringify instead)
 app.get('/app/rpsls/', (req, res) => {
     // Use format from above
     res.status(200).send(JSON.stringify(rpsls()));
 })
 
-// Operational requirement # 6 (Accept Request Bodies)
+// Operational requirement (Accept Request Bodies)
 app.get('/app/rps/play/', (req, res) => {
-    // What do I pass into rps? -> Update: pass 'req.query.shot' as an argument
+    // What do I pass into rps? -> Update: Use 'req.query'
     res.status(200).send(JSON.stringify(rps(req.query.shot)));
 })
+
+app.get('/app/rpsls/play/', (req, res) => {
+    // Do the same thing for rpsls (Also update path above)
+    res.status(200).send(JSON.stringify(rpsls(req.query.shot)));
+})
+
+app.post('/app/rps/play/', (req, res) => {
+    // Now use the post method route
+    res.status(200).send(JSON.stringify(rps(req.body.shot)));
+})
+
+app.post('/app/rpsls/play/', (req, res) => {
+    // Post method route
+    res.status(200).send(JSON.stringify(rpsls(req.body.shot)));
+})
+
+app.get('/app/rps/play/:shot', (req, res) => {
+    // Get method route (use 'req.params' instead)
+    res.status(200).send(JSON.stringify(rps(req.params.shot)));
+})
+
+app.get('/app/rpsls/play/:shot', (req, res) => {
+    // Get method route (use 'req.params' instead)
+    res.status(200).send(JSON.stringify(rpsls(req.params.shot)));
+})
+
+// Checkpoint 1: Run tests to see where you are
