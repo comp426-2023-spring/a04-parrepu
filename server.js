@@ -46,41 +46,46 @@ app.get('/app/rpsls/', (req, res) => {
     res.status(200).send(JSON.stringify(rpsls()));
 })
 
-// Operational requirement (Accept Request Bodies)
+// Operational requirement (Now we're going to utilize 'req.query')
 app.get('/app/rps/play/', (req, res) => {
     // What do I pass into rps? -> Update: Use 'req.query'
     res.status(200).send(JSON.stringify(rps(req.query.shot)));
 })
 
+// Use the same structure and pass rpsls() as an argument into stringify()
 app.get('/app/rpsls/play/', (req, res) => {
     // Do the same thing for rpsls (Also update path above)
     res.status(200).send(JSON.stringify(rpsls(req.query.shot)));
 })
 
+// Operational requirement (Now we're going to utilize 'req.body')
 app.post('/app/rps/play/', (req, res) => {
     // Now use the post method route
     res.status(200).send(JSON.stringify(rps(req.body.shot)));
 })
 
-app.post('/app/rpsls/play/', (req, res) => {
-    // Post method route
-    res.status(200).send(JSON.stringify(rpsls(req.body.shot)));
-})
-
+// Reference online documentation to see how the following works
 app.get('/app/rps/play/:shot', (req, res) => {
     // Get method route (use 'req.params' instead)
     res.status(200).send(JSON.stringify(rps(req.params.shot)));
 })
 
+// Follow same logic as two post statements above (now we're just passing rpsls() as an argument into stringify)
+app.post('/app/rpsls/play/', (req, res) => {
+    // Post method route
+    res.status(200).send(JSON.stringify(rpsls(req.body.shot)));
+})
+
+// Note: Pass rpsls() as an argument into stringify
 app.get('/app/rpsls/play/:shot', (req, res) => {
     // Get method route (use 'req.params' instead)
     res.status(200).send(JSON.stringify(rpsls(req.params.shot)));
 })
 
+// Default endpoint should return "404 NOT FOUND" when any endpoint is not defined 
 // Checkpoint 1: Run tests to see where you are
 app.get('/app/*', (req, res) => {
-    // Default endpoint should return "404 NOT FOUND" when any endpoint in not defined 
-    // Also change the status num to 404
+    // Also change the status num to 404 instead of 200
     res.status(404).send("404 NOT FOUND");
 })
 
