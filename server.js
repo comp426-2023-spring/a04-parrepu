@@ -46,6 +46,7 @@ app.get('/app/rpsls/', (req, res) => {
     res.status(200).send(JSON.stringify(rpsls()));
 })
 
+
 // Operational requirement (Now we're going to utilize 'req.query')
 app.get('/app/rps/play/', (req, res) => {
     // What do I pass into rps? -> Update: Use 'req.query'
@@ -58,11 +59,13 @@ app.get('/app/rpsls/play/', (req, res) => {
     res.status(200).send(JSON.stringify(rpsls(req.query.shot)));
 })
 
+
 // Operational requirement (Now we're going to utilize 'req.body')
 app.post('/app/rps/play/', (req, res) => {
     // Now use the post method route
     res.status(200).send(JSON.stringify(rps(req.body.shot)));
 })
+
 
 // Reference online documentation to see how the following works
 app.get('/app/rps/play/:shot', (req, res) => {
@@ -75,6 +78,7 @@ app.post('/app/rpsls/play/', (req, res) => {
     // Post method route
     res.status(200).send(JSON.stringify(rpsls(req.body.shot)));
 })
+
 
 // Note: Pass rpsls() as an argument into stringify
 app.get('/app/rpsls/play/:shot', (req, res) => {
@@ -92,5 +96,5 @@ app.get('/app/*', (req, res) => {
 // Could I just return the following? -> Update: Yes
 app.listen(port);
 
-// Do I need to do a 'process.exit()' at the end of the file? -> Included just in case
-process.exit(0);
+// Debugging: Do I need to do a 'process.exit()' at the end of the file? -> DONT include (will cause potential errors)
+// process.exit(0);
