@@ -18,7 +18,7 @@ const app = express(); // Set name of variable to app as implied in documentatio
     // process.exit(0); 
 // }
 
-const varport = arg2.varport || 5000; // Another way (Debugging? -> Works) -> Port should default to 5000 if no argument is specified
+const port = arg2.port || 5000; // Another way (Debugging? -> Works) -> Port should default to 5000 if no argument is specified
 
 // Utilize app variable from earlier here
 app.use(express.json());
@@ -82,7 +82,7 @@ app.get('/app/*', (req, res) => {
 })
 
 // Could I just return the following? -> Yes
-app.listen(varport);
+app.listen(port);
 
 // Do I need to do a process.exit(); at the end of the file?
 // process.exit(0);
