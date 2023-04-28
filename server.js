@@ -11,14 +11,14 @@ import express from "express";
 const arg2 = minimist(process.argv.slice(2))
 
 // Make another variable and set the value using the express import
-const app = express(); // Set name of variable to app as implied in documentation
+const app = express(); // Set name of variable to app as implied in documentation (pay attention to path -> ex. /app/rpsls/)
 
 // if (portvar === null) { Port should default to 5000 if no argument is given | Much easier way of writing this (use '||' below)
     // portvar = 5000;
     // process.exit(0); 
 // }
 
-const port = arg2.port || 5000; // Another way (Debugging?) -> Port should default to 5000 if no argument is specified
+const varport = arg2.varport || 5000; // Another way (Debugging? -> Works) -> Port should default to 5000 if no argument is specified
 
 // Utilize app variable from earlier here
 app.use(express.json());
@@ -82,7 +82,7 @@ app.get('/app/*', (req, res) => {
 })
 
 // Could I just return the following? -> Yes
-app.listen(port);
+app.listen(varport);
 
 // Do I need to do a process.exit(); at the end of the file?
 // process.exit(0);
