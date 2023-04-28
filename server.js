@@ -82,15 +82,15 @@ app.get('/app/rpsls/play/:shot', (req, res) => {
     res.status(200).send(JSON.stringify(rpsls(req.params.shot)));
 })
 
-// Default endpoint should return "404 NOT FOUND" when any endpoint is not defined 
 // Checkpoint 1: Run tests to see where you are
+// Default endpoint should return "404 NOT FOUND" when any endpoint is not defined 
 app.get('/app/*', (req, res) => {
     // Also change the status num to 404 instead of 200
     res.status(404).send("404 NOT FOUND");
 })
 
-// Could I just return the following? -> Yes
+// Could I just return the following? -> Update: Yes
 app.listen(port);
 
-// Do I need to do a process.exit(); at the end of the file?
-// process.exit(0);
+// Do I need to do a 'process.exit()' at the end of the file? -> Included just in case
+process.exit(0);
