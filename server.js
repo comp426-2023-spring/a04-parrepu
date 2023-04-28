@@ -81,7 +81,7 @@ app.get('/app/*', (req, res) => {
     res.status(404).send("404 NOT FOUND");
 })
 
-// Could I just return the following?
+// Could I just return the following? -> Yes
 app.listen(port);
 
 // Do I need to do a process.exit(); at the end of the file?
